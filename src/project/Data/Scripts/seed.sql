@@ -80,8 +80,8 @@ SET IDENTITY_INSERT [LikePost] OFF;
 
 
 SET IDENTITY_INSERT [TopShowsAndGenres] ON;
-INSERT INTO [TopShowsAndGenres] (ID, UserID, Show1, Show2, Show3, Genre1, Genre2, Genre3)
+INSERT INTO [TopShowsAndGenres] (ID, UserID, Show1ID, Show2ID, Show3ID, Genre1ID, Genre2ID, Genre3ID)
 VALUES
-(1, 1, "Up", "Karate Kid", null, "Action", null, null),
-(2, 2, "Dead to me", null, null, null, null, null)
+(1, 1, 24, 178, null, 1, null, null),
+(2, 2, 64, null, null, 3, 4, null)
 SET IDENTITY_INSERT [TopShowsAndGenres] OFF;

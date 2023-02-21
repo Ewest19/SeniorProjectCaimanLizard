@@ -43,12 +43,12 @@ CREATE TABLE [TopShowsAndGenres]
 (
     [ID]                    INT                 NOT NULL PRIMARY KEY IDENTITY(1,1),
     [UserID]                INT                 NOT NULL,
-    [Show1]                 NVARCHAR(32),
-    [Show2]                 NVARCHAR(32),
-    [Show3]                 NVARCHAR(32),
-    [Genre1]                NVARCHAR(32),
-    [Genre2]                NVARCHAR(32),
-    [Genre3]                NVARCHAR(32)
+    [Show1ID]               INT,
+    [Show2ID]               INT,
+    [Show3ID]               INT,
+    [Genre1ID]              INT,
+    [Genre2ID]              INT,
+    [Genre3ID]              INT
 );
 
 ALTER TABLE [Post]                  ADD CONSTRAINT [Fk_Post_UserID]                 FOREIGN KEY([UserID])                   REFERENCES[Watcher]([Id])           ON DELETE NO ACTION ON UPDATE NO ACTION;
