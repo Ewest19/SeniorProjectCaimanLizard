@@ -17,10 +17,55 @@
                 <h1>@Model.Watcher.Username</h1>
                 <h3>@Model.Watcher.FirstName @Model.Watcher.LastName</h3>
                 <h6>Following @Model.Watcher.FollowingCount    Followers @Model.Watcher.FollowerCount</h6>
+                <br />
+                <div class="col-sm-6">
+                        <table id="showtable" class="table">
+                        <thead>
+                            <th>#</th>
+                            <th scope="col">Top 3 Shows</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td id="show1"></td>
+                            </tr>  
+                            <tr>
+                                <th scope="row">2</th>
+                                <td id="show2"></td>
+                            </tr> 
+                            <tr>
+                                <th scope="row">3</th>
+                                <td id="show3"></td>
+                            </tr> 
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-sm-6">
+                        <table id="genreTable" class="table">
+                            <thead>
+                                <th>#</th>
+                                <th scope="col">Top 3 Genres</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td id="genre1"></td>
+                                </tr>  
+                                <tr>
+                                    <th scope="row">2</th>
+                                        <td id="genre2"></td>
+                                </tr> 
+                                <tr>
+                                    <th scope="row">3</th>
+                                        <td id="genre3"></td>
+                                </tr> 
+                            </tbody>
+                        </table>
+                </div>      
             </div>
+            <br>
+            
             <div class="col-md-2">
-
-
                 <a href=/Watcher/Edit/@Model.Watcher.Id class="btn cld-btn-primary text-light">Edit Profile</a>
             </div>
         </div>
@@ -35,3 +80,10 @@
 </section>
 
 
+@section Scripts
+    {
+        <script type="text/javascript" src="~/js/topShows.js"></script>
+        <script>
+            console.log("loaded Scripts section");
+        </script>
+}
