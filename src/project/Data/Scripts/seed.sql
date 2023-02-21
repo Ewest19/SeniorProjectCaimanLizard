@@ -1,5 +1,5 @@
 SET IDENTITY_INSERT [Watcher] ON;
-INSERT INTO [Watcher](ID, Username, FirstName, LastName, Email, FollowingCount, FollowerCount, Bio)
+INSERT INTO [Watcher](ID, AspNetIdentityId, Username, FirstName, LastName, Email, FollowingCount, FollowerCount, Bio)
 VALUES
 ('1', 'first', 'SandraHart', 'Sandra', 'Hart', 'SandraHart@email.com', 0, 0, NULL),
 ('2', 'second', 'CarsonDaniel', 'Carson', 'Daniel', 'DanielCarson@domain.net', 0, 0, NULL),
@@ -77,3 +77,11 @@ VALUES
 (19, 10, 7),
 (20, 10, 3)
 SET IDENTITY_INSERT [LikePost] OFF;
+
+
+SET IDENTITY_INSERT [TopShowsAndGenres] ON;
+INSERT INTO [TopShowsAndGenres] (ID, UserID, Show1, Show2, Show3, Genre1, Genre2, Genre3)
+VALUES
+(1, 1, "Up", "Karate Kid", null, "Action", null, null),
+(2, 2, "Dead to me", null, null, null, null, null)
+SET IDENTITY_INSERT [TopShowsAndGenres] OFF;
