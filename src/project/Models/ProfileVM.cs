@@ -6,7 +6,7 @@
 
         public bool isCurrentUser { get; set; }
 
-        public TopGenre? TopGenre { get; set; }
-        public TopShow?  TopShow { get; set; }
+        public IEnumerable<TopGenre>? TopGenres { get; set; }
+        public IEnumerable<TopShow>? TopShows { get; set; }
     }
 }

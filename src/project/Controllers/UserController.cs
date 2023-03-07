@@ -16,13 +16,17 @@ public class UserController : Controller
     private readonly UserManager<IdentityUser> _userManager;
     private readonly IWatcherRepository _watcherRepository;
     private readonly WatchPartyDbContext _context;
+    private readonly IGenreRepository _genreRepository; 
+    private readonly IShowRepository _showRepository;
 
-    public UserController(ILogger<HomeController> logger, IWatcherRepository watcherRepsoitory, UserManager<IdentityUser> userManager, WatchPartyDbContext context)
+    public UserController(ILogger<HomeController> logger, IWatcherRepository watcherRepsoitory, UserManager<IdentityUser> userManager, WatchPartyDbContext context, IGenreRepository genreRepository, IShowRepository showRepository)
     {
         _logger = logger;
         _userManager = userManager;
         _watcherRepository = watcherRepsoitory;
         _context = context;
+        _genreRepository = genreRepository;
+        _showRepository = showRepository;
     }
 
     // GET: user/ {username}
@@ -39,6 +43,9 @@ public class UserController : Controller
 
         var currentUser = await _userManager.GetUserAsync(User);
         vm.isCurrentUser = _watcherRepository.IsCurrentUser(username, currentUser);
+
+        vm.TopGenres = _genreRepository.GetTopGenres(watcher.Id);
+        vm.TopShows = _showRepository.GetTopShows(watcher.Id);
 
 
         if (watcher == null)
