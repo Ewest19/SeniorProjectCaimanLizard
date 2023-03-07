@@ -46,6 +46,13 @@ CREATE TABLE [TopShow]
     [UserId]                INT                 NOT NULL
 );
 
+CREATE TABLE [TopGenre]
+(
+    [ID]                    INT                 NOT NULL PRIMARY KEY IDENTITY(1,1),
+    [Genre]                 NVARCHAR(100)       NOT NULL,
+    [UserId]                INT                 NOT NULL
+);
+
 ALTER TABLE [Post]                  ADD CONSTRAINT [Fk_Post_UserID]                 FOREIGN KEY([UserID])                   REFERENCES[Watcher]([Id])           ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE [Reshare]               ADD CONSTRAINT [Fk_Reshare_PostID]              FOREIGN KEY([PostID])                   REFERENCES[Post]([ID])              ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -55,3 +62,4 @@ ALTER TABLE [LikePost]              ADD CONSTRAINT [Fk_LikePost_PostID]         
 ALTER TABLE [LikePost]              ADD CONSTRAINT [Fk_LikePost_UserID]             FOREIGN KEY([UserID])                   REFERENCES[Watcher]([ID])           ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 ALTER TABLE [TopShow]               ADD CONSTRAINT [Fk_TopShow_UserID]             FOREIGN KEY([UserID])                   REFERENCES[Watcher]([ID])           ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE [TopGenre]              ADD CONSTRAINT [Fk_TopGenre_UserID]            FOREIGN KEY([UserID])                   REFERENCES[Watcher]([ID])           ON DELETE NO ACTION ON UPDATE NO ACTION;

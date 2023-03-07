@@ -83,4 +83,11 @@ INSERT INTO [TopShow] (ID, Title, UserID)
 VALUES
 (1, 'The Last Of Us', 2),
 (2, 'The Last Of US', 1)
-SET IDENTITY_INSERT [LikePost] OFF;
+SET IDENTITY_INSERT [TopShow] OFF;
+
+SET IDENTITY_INSERT [TopGenre] ON;
+INSERT INTO [TopGenre] (ID, Genre, UserID)
+VALUES
+(1, 'Action', 2),
+(2, 'Drama', 1)
+SET IDENTITY_INSERT [TopGenre] OFF;
