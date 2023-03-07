@@ -50,7 +50,7 @@ CREATE TABLE [TopGenre]
 (
     [ID]                    INT                 NOT NULL PRIMARY KEY IDENTITY(1,1),
     [Genre]                 NVARCHAR(100)       NOT NULL,
-    [UserId]                INT                 NOT NULL
+    [UserId]                INT
 );
 
 ALTER TABLE [Post]                  ADD CONSTRAINT [Fk_Post_UserID]                 FOREIGN KEY([UserID])                   REFERENCES[Watcher]([Id])           ON DELETE NO ACTION ON UPDATE NO ACTION;

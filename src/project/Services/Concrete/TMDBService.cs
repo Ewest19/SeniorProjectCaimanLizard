@@ -55,14 +55,56 @@ namespace WatchParty.Services.Concrete
             return new TMDBImageConfig();
         }
 
-        public IEnumerable<TMDBGenre> GetMovieGenres(string relativePath)
+        public IEnumerable<TMDBGenre> GetMovieGenres(string relativePath = "/genre/movie/list?")
         {
-            throw new NotImplementedException();
+            var jsonResponse = _httpClient.GetJsonStringFromEndpoint(this.Key, $"{relativePath}");
+            Debug.WriteLine(jsonResponse);
+
+            TMDBJsonDTO? tmdbJsonDTO = new();
+            try
+            {
+                tmdbJsonDTO = System.Text.Json.JsonSerializer.Deserialize<TMDBJsonDTO>(jsonResponse);
+            }
+            catch (System.Text.Json.JsonException e)
+            {
+                tmdbJsonDTO = null;
+                Debug.WriteLine(e);
+            }
+
+            if (tmdbJsonDTO.results == null) return new List<TMDBGenre>();
+
+            return tmdbJsonDTO.results.Select(r => new TMDBGenre()
+            {
+                Name = r.name,
+                Id = r.id
+            })
+            .ToList();
         }
 
-        public IEnumerable<TMDBGenre> GetShowGenres(string relativePath)
+        public IEnumerable<TMDBGenre> GetShowGenres(string relativePath = "/genre/tv/list?")
         {
-            throw new NotImplementedException();
+            var jsonResponse = _httpClient.GetJsonStringFromEndpoint(this.Key, $"{relativePath}");
+            Debug.WriteLine(jsonResponse);
+
+            TMDBJsonDTO? tmdbJsonDTO = new();
+            try
+            {
+                tmdbJsonDTO = System.Text.Json.JsonSerializer.Deserialize<TMDBJsonDTO>(jsonResponse);
+            }
+            catch (System.Text.Json.JsonException e)
+            {
+                tmdbJsonDTO = null;
+                Debug.WriteLine(e);
+            }
+
+            if (tmdbJsonDTO.results == null) return new List<TMDBGenre>();
+
+            return tmdbJsonDTO.results.Select(r => new TMDBGenre()
+            {
+                Name = r.name,
+                Id = r.id
+            })
+            .ToList();
         }
 
         public IEnumerable<TMDBTitle> SearchMovies(string movieTitle, string relativePath = "/search/multi?query=")

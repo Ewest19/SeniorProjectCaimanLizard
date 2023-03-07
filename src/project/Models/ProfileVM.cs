@@ -8,5 +8,7 @@
 
         public IEnumerable<TopGenre>? TopGenres { get; set; }
         public IEnumerable<TopShow>? TopShows { get; set; }
+
+        public IEnumerable<TopGenre>? AllGenres { get; set; }
     }
 }

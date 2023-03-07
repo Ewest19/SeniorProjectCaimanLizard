@@ -38,7 +38,7 @@
                                     <ul class="list-group list-group-flush">
                                         @foreach (TopShow s in Model.TopShows)
                                         {
-                                            <li class="list-group-item" id="genre1">@s.Title</li>
+                                            <li class="list-group-item">@s.Title</li>
                                         }
                                     </ul>
                                 }
@@ -54,7 +54,7 @@
                                     <ul class="list-group list-group-flush">
                                     @foreach (TopGenre g in Model.TopGenres)
                                     {
-                                            <li class="list-group-item" id="genre1">@g.Genre</li>
+                                            <li class="list-group-item">@g.Genre</li>
                                     }
                                     </ul>
                                 }
@@ -84,7 +84,7 @@
         <p>watcher is null</p>
     }
 
-    <!-- Modal -->
+    <!-- Edit Profile Modal -->
     <div class="modal fade" id="editProfileModal" tabindex="-1" >
         <div class="modal-dialog">
             <div class="modal-content">
@@ -127,6 +127,7 @@
             </div>
         </div>
     </div>
+
 
     <br />
     <br />
