@@ -77,3 +77,10 @@ VALUES
 (19, 10, 7),
 (20, 10, 3)
 SET IDENTITY_INSERT [LikePost] OFF;
+
+SET IDENTITY_INSERT [TopShow] ON;
+INSERT INTO [TopShow] (ID, Title, UserID)
+VALUES
+(1, 'The Last Of Us', 2),
+(2, 'The Last Of US', 1)
+SET IDENTITY_INSERT [LikePost] OFF;
