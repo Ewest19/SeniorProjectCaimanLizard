@@ -42,4 +42,10 @@ public partial class Watcher
 
     [InverseProperty("User")]
     public virtual ICollection<Reshare> Reshares { get; } = new List<Reshare>();
+
+    [InverseProperty("User")]
+    public virtual ICollection<TopGenre> TopGenres { get; } = new List<TopGenre>();
+
+    [InverseProperty("User")]
+    public virtual ICollection<TopShow> TopShows { get; } = new List<TopShow>();
 }

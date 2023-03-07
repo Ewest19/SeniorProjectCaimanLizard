@@ -21,23 +21,20 @@ public partial class WatchPartyDbContext : DbContext
 
     public virtual DbSet<Reshare> Reshares { get; set; }
 
+    public virtual DbSet<TopGenre> TopGenres { get; set; }
+
+    public virtual DbSet<TopShow> TopShows { get; set; }
+
     public virtual DbSet<Watcher> Watchers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        if (!optionsBuilder.IsConfigured)
-        {
-            optionsBuilder
-                .UseLazyLoadingProxies()        // <-- add this line
-                .UseSqlServer("Name=WatchPartyConnection");
-        }
-    }
+        => optionsBuilder.UseSqlServer("Name=WatchPartyConnection");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<LikePost>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__LikePost__3214EC27297B383E");
+            entity.HasKey(e => e.Id).HasName("PK__LikePost__3214EC27464033F7");
 
             entity.HasOne(d => d.Post).WithMany(p => p.LikePosts)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -50,7 +47,7 @@ public partial class WatchPartyDbContext : DbContext
 
         modelBuilder.Entity<Post>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Post__3214EC279BA667FF");
+            entity.HasKey(e => e.Id).HasName("PK__Post__3214EC272A295039");
 
             entity.HasOne(d => d.User).WithMany(p => p.Posts)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -59,7 +56,7 @@ public partial class WatchPartyDbContext : DbContext
 
         modelBuilder.Entity<Reshare>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Reshare__3214EC273C5366D6");
+            entity.HasKey(e => e.Id).HasName("PK__Reshare__3214EC272B88D7CD");
 
             entity.HasOne(d => d.Post).WithMany(p => p.Reshares)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -70,9 +67,27 @@ public partial class WatchPartyDbContext : DbContext
                 .HasConstraintName("Fk_Reshare_UserID");
         });
 
+        modelBuilder.Entity<TopGenre>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__TopGenre__3214EC27B354E8D2");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TopGenres)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Fk_TopGenre_UserID");
+        });
+
+        modelBuilder.Entity<TopShow>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__TopShow__3214EC27A9C9E218");
+
+            entity.HasOne(d => d.User).WithMany(p => p.TopShows)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("Fk_TopShow_UserID");
+        });
+
         modelBuilder.Entity<Watcher>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Watcher__3214EC07A8A4F865");
+            entity.HasKey(e => e.Id).HasName("PK__Watcher__3214EC0785AD2EC3");
         });
 
         OnModelCreatingPartial(modelBuilder);
